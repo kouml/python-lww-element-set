@@ -24,10 +24,52 @@ Test is wrriten in `lww_element_set_test.py`.
   - test_multi_threading()
 
 You can test with `pytest`.
+
+These are more details about the testcase.
+
+## Single Threading Testcase
+
+A(addition_set), R(removal_set), add(add operation), rm(remove operation), v(Value)
+
+| State   | Operation | Result(Value, Timestamp) | Test Method      |
+| ------- | --------- | ------------------------ | ---------------- |
+| A(v, 1) | add(v, 0) | v, 1                     | test_add_state() |
+| A(v, 1) | add(v, 1) | v, 1                     | test_add_state() |
+| A(v, 1) | add(v, 2) | v, 2                     | test_add_state() |
+| A(v, 1) | rm(v, 0)  | v, 1                     | test_add_state() |
+| A(v, 1) | rm(v, 1)  | v, 1                     | test_add_state() |
+| A(v, 1) | rm(v, 2)  | None                     | test_add_state() |
+| R(v, 1) | add(v, 0) | None                     | test_rm_state()  |
+| R(v, 1) | add(v, 1) | v, 1                     | test_rm_state()  |
+| R(v, 1) | add(v, 2) | v, 2                     | test_rm_state()  |
+| R(v, 1) | rm(v, 0)  | None                     | test_rm_state()  |
+| R(v, 1) | rm(v, 1)  | None                     | test_rm_state()  |
+| R(v, 1) | rm(v, 2)  | None                     | test_rm_state()  |
+
+These tests are modfied the original testcases by [Roshi](https://github.com/soundcloud/roshi).
+
+## Multiple Threading Testcase
+
+| Operation1 | Operation2 | Result(Value, Timestamp) | Test Method            |
+| ---------- | ---------- | ------------------------ | ---------------------- |
+| add(v, 1)  | add(v, 0)  | v, 1                     | test_multi_threading() |
+| add(v, 1)  | add(v, 1)  | v, 1                     | test_multi_threading() |
+| add(v, 1)  | add(v, 2)  | v, 2                     | test_multi_threading() |
+| add(v, 1)  | rm(v, 0)   | v, 1                     | test_multi_threading() |
+| add(v, 1)  | rm(v, 1)   | v, 1                     | test_multi_threading() |
+| add(v, 1)  | rm(v, 2)   | None                     | test_multi_threading() |
+| rm(v, 1)   | add(v, 0)  | None                     | test_multi_threading() |
+| rm(v, 1)   | add(v, 1)  | v, 1                     | test_multi_threading() |
+| rm(v, 1)   | add(v, 2)  | v, 2                     | test_multi_threading() |
+| rm(v, 1)   | rm(v, 0)   | None                     | test_multi_threading() |
+| rm(v, 1)   | rm(v, 1)   | None                     | test_multi_threading() |
+| rm(v, 1)   | rm(v, 2)   | None                     | test_multi_threading() |
+
 Multiple Threading Testcase has an random waiting time which will get a nondeterministic order.
-however, timestamp is a mock so that we can get same result.
+however, timestamp is a mock so that we can get same result in spite of the order.
 
 # References
 - https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type
 - https://github.com/pfrazee/crdt_notes#sets
 - https://hal.inria.fr/inria-00555588/PDF/techreport.pdf
+- https://github.com/soundcloud/roshi
