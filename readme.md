@@ -23,9 +23,15 @@ Test is wrriten in `lww_element_set_test.py`.
 - Multiple Threading Testcase
   - test_multi_threading()
 
+## Test Usage
+
+```
+$ pytest
+```
+
 You can test with `pytest`.
 
-These are more details about the testcase.
+
 
 ## Single Threading Testcase
 
