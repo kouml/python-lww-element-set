@@ -19,6 +19,20 @@ class LwwElementSet:
         else:
             self.removal_set[value] = timestamp
 
+    def merge(self, other_lww):
+        for v, t in other_lww.addition_set.items():
+            if v in self.addition_set:
+                if t >= self.addition_set[v]:
+                    self.addition_set[v] = t
+            else:
+                self.addition_set[v] = t
+        for v, t in other_lww.removal_set.items():
+            if v in self.removal_set:
+                if t >= self.removal_set[v]:
+                    self.removal_set[v] = t
+            else:
+                self.removal_set[v] = t
+
     def get_all(self):
         elements = []
         for v, t in self.addition_set.items():

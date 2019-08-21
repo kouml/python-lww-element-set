@@ -22,6 +22,7 @@ Test is wrriten in `lww_element_set_test.py`.
     - test_rm_state()
 - Multiple Threading Testcase
   - test_multi_threading()
+- Merge Testcase
 
 ## Test Usage
 
@@ -73,6 +74,14 @@ These tests are modfied the original testcases by [Roshi](https://github.com/sou
 
 Multiple Threading Testcase has an random waiting time which will get a nondeterministic order.
 however, timestamp is a mock so that we can get same result in spite of the order.
+
+
+
+### Merge Testcase
+
+Merge testcase is similar to Multiple Threading Testcase. however, These are deterministic order and It will test whether merge behavior is work or not.
+
+
 
 # References
 - https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type
