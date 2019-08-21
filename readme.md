@@ -77,7 +77,7 @@ however, timestamp is a mock so that we can get same result in spite of the orde
 
 
 
-### Merge Testcase
+## Merge Testcase
 
 Merge testcase is similar to Multiple Threading Testcase. however, These are deterministic order and It will test whether merge behavior is work or not.
 
