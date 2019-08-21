@@ -6,7 +6,7 @@ This is a simple lww-element-set implementation by Python.
 lww_element_set
 ├── lww_element_set.py
 ├── lww_element_set_test.py
-└── README.md
+└── readme.md
 ```
 
 # Requirements
